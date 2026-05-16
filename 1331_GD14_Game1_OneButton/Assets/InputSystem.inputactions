@@ -1,0 +1,35 @@
+{
+    "version": 1,
+    "name": "InputSystem",
+    "maps": [
+        {
+            "name": "Control",
+            "id": "474f7471-7e77-4d68-bb92-2b08c0c34fea",
+            "actions": [
+                {
+                    "name": "Space",
+                    "type": "Button",
+                    "id": "dd09f3ac-27b4-423d-a586-cacd1145431b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "a9b3c7ca-f34b-4336-800c-7502e6d4d8fe",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Space",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
