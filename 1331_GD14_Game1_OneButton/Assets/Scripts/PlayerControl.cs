@@ -16,13 +16,14 @@ public class PlayerControl : MonoBehaviour
     void FixedUpdate()
     {
         transform.Translate(_speed * Time.fixedDeltaTime);
+        Debug.Log(_speed);
     }
 
     public void Stop(InputAction.CallbackContext context)
     {
         Debug.Log("oiuhasdfa");
-        _speed = Vector2.zero; 
+        _speed = new Vector2(0, 0); 
         if (context.canceled)
-            _speed = _startSpeed; Debug.Log("oiuhasdfa");
+            _speed = _startSpeed;
     }
 }
