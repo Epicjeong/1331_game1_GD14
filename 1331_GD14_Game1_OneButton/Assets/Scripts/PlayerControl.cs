@@ -10,6 +10,7 @@ public class PlayerControl : MonoBehaviour
 
     private float _breath = 100f;
     private bool _holdingBreath = false;
+    private bool _canMove = true;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -20,16 +21,24 @@ public class PlayerControl : MonoBehaviour
     
     void FixedUpdate()
     {
-        transform.Translate(_speed * Time.fixedDeltaTime);
-        if (_holdingBreath)
+        if (_holdingBreath && _breath > 0)
         {
             _breath--;
             Debug.Log(_breath);
+            if (_breath == 0)
+            {
+                _holdingBreath = false;
+                StartCoroutine(PanickedBreathing());
+            }
         }
-        else if (!_holdingBreath && _breath < 100)
+        else if (!_holdingBreath)
         {
-            _breath++;
-            Debug.Log(_breath);
+            transform.Translate(_speed * Time.fixedDeltaTime);
+            if (_breath < 100)
+            {
+                _breath++;
+                Debug.Log(_breath);
+            }
         }
     }
 
@@ -37,10 +46,6 @@ public class PlayerControl : MonoBehaviour
     {
         _speed = new Vector2(0, 0);
         _holdingBreath = true;
-        if (_breath == 0)
-        {
-            PanickedBreathing();
-        }
         if (context.canceled && _holdingBreath)
         {
             Continue();
@@ -56,9 +61,8 @@ public class PlayerControl : MonoBehaviour
 
     private IEnumerator PanickedBreathing()
     {
-        _holdingBreath = false;
         yield return new WaitWhile(() => _breath < 100);
-        Continue();
-        
+        _speed = _startSpeed;
+
     }
 }
