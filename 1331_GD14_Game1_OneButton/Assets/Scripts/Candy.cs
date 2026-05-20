@@ -1,4 +1,6 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class Candy : MonoBehaviour
 {
@@ -11,8 +13,10 @@ public class Candy : MonoBehaviour
         _rigidBody2D.AddForce(_force);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D other)
     {
         Destroy(gameObject);
     }
+
+    
 }

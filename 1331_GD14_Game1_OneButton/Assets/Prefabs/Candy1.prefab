@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6047280713082354761}
   - component: {fileID: -1266059494297843877}
   - component: {fileID: -7126407617988638662}
+  - component: {fileID: 6370340083650350900}
   m_Layer: 0
   m_Name: Candy1
   m_TagString: Untagged
@@ -192,7 +193,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -204,3 +205,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &6370340083650350900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5577517300197579798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64b3cbc2343a095439fbd9cb594b61c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DamagingThing

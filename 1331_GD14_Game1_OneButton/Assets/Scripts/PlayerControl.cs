@@ -10,8 +10,6 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private Vector2 _startSpeed;
     private Vector2 _speed;
 
-    [SerializeField] private int _health;
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -33,8 +31,14 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void Freeze()
     {
-        Debug.Log("owie");
+        _speed = Vector2.zero;
+        transform.position = new Vector2(0, transform.position.y);
+        Physics.SyncTransforms();
+    }
+    public void Resume()
+    {
+        _speed = _startSpeed;
     }
 }
