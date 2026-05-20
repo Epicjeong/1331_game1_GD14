@@ -6,6 +6,7 @@ using static UnityEngine.GraphicsBuffer;
 
 public class PlayerControl : MonoBehaviour
 {
+    [SerializeField] private CharacterController _charControl;
     [SerializeField] private Vector2 _startSpeed;
     private Vector2 _speed;
 
@@ -20,7 +21,7 @@ public class PlayerControl : MonoBehaviour
 
     void FixedUpdate()
     {
-        transform.Translate(_speed * Time.fixedDeltaTime);
+        _charControl.Move(_speed * Time.deltaTime);
     }
 
     public void SwitchDirections(InputAction.CallbackContext context)
@@ -30,5 +31,10 @@ public class PlayerControl : MonoBehaviour
         {
             _speed = _startSpeed;
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("owie");
     }
 }

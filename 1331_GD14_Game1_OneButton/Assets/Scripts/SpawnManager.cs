@@ -4,7 +4,7 @@ public class SpawnManager : MonoBehaviour
 {
 
     [SerializeField] private GameObject[] _candyPrefab;
-    private int _spawnRange = 8;
+    private int _spawnRange = 7;
     private float _spawnInterval = 1f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
