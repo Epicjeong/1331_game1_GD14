@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4226616465947369958}
   - component: {fileID: -8540101151415327157}
   - component: {fileID: 6469311320068744976}
+  - component: {fileID: -2406629880289850988}
   m_Layer: 0
   m_Name: Candy2
   m_TagString: Untagged
@@ -161,3 +162,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-2406629880289850988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5577517300197579798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb5b7311ee4c36645ac2fc4adf998a78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Candy
+  _fallSpeed: {x: 0, y: 0}
