@@ -6,6 +6,7 @@ public class Candy : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D _rigidBody2D;
     [SerializeField] private Vector3 _force;
+    [SerializeField] private Score _scoreKeeper;
 
     // Update is called once per frame
     void FixedUpdate()
@@ -15,6 +16,7 @@ public class Candy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        
         Destroy(gameObject);
     }
 

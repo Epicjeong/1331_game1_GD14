@@ -178,6 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Candy
   _rigidBody2D: {fileID: -7126407617988638662}
   _force: {x: 0, y: -5, z: 0}
+  _scoreKeeper: {fileID: 0}
 --- !u!50 &-7126407617988638662
 Rigidbody2D:
   serializedVersion: 5

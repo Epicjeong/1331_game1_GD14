@@ -10,13 +10,7 @@ public class SpawnManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        InvokeRepeating("DropCandies", 0, _spawnInterval);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        StartDropping();
     }
 
     private void DropCandies()
@@ -24,5 +18,10 @@ public class SpawnManager : MonoBehaviour
         int candySpawned = Random.Range(0, _candyPrefab.Length);
         Vector2 spawnPos = new Vector2(Random.Range(-_spawnRange, _spawnRange), transform.position.y);
         Instantiate(_candyPrefab[candySpawned], spawnPos, transform.rotation);
+    }
+
+    public void StartDropping()
+    {
+        InvokeRepeating("DropCandies", 0, _spawnInterval);
     }
 }
