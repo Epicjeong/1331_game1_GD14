@@ -9,6 +9,8 @@ public class Health : MonoBehaviour
     [SerializeField] private bool _isInvulnerable;
     [SerializeField] private PlayerControl _player;
     [SerializeField] private SpawnManager _spawner;
+    [SerializeField] private GameObject _gameOverDisplay;
+    [SerializeField] private Score _score;
 
     private int _invulTime = 1;
     public int CurrentHealth { get; private set; }
@@ -43,9 +45,7 @@ public class Health : MonoBehaviour
             if (CurrentHealth <= 0) Die();
 
             else
-            {
                 StartCoroutine(Invulnerable());
-            }
         }
     }
 
@@ -53,6 +53,9 @@ public class Health : MonoBehaviour
     {
         IsDead = true;
         OnDied?.Invoke();
+        _spawner.CancelInvoke();
+        _gameOverDisplay.SetActive(true);
+        _score.StopScore();
         Destroy(gameObject);
     }
 
@@ -61,7 +64,6 @@ public class Health : MonoBehaviour
         _isInvulnerable = true;
         _spawner.CancelInvoke();
         _player.Freeze();
-        Debug.Log("sasdfaf");
         yield return new WaitForSeconds(_invulTime);
         _isInvulnerable = false;
         _spawner.StartDropping();

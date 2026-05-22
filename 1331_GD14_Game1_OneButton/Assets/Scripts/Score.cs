@@ -6,6 +6,7 @@ public class Score : MonoBehaviour
 {
     private float _timer;
     private int _score;
+    private bool _playerAlive = true;
     [SerializeField] private TextMeshProUGUI _scoreText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -16,8 +17,16 @@ public class Score : MonoBehaviour
 
     private void Update()
     {
-        _timer += Time.deltaTime;
-        _score = System.Convert.ToInt32( _timer % 60 );
-        _scoreText.text = "Score: " + _score;
+        if (_playerAlive)
+        {
+            _timer += Time.deltaTime;
+            _score = System.Convert.ToInt32(_timer % 60);
+            _scoreText.text = "Score: " + _score;
+        }
+    }
+
+    public void StopScore()
+    {
+        _playerAlive = false;
     }
 }
