@@ -11,8 +11,9 @@ public class Health : MonoBehaviour
     [SerializeField] private SpawnManager _spawner;
     [SerializeField] private GameObject _gameOverDisplay;
     [SerializeField] private Score _score;
-
-    private int _invulTime = 1;
+    [SerializeField] private HeartDisplay _hearts;
+ 
+    private int _invulTime = 2;
     public int CurrentHealth { get; private set; }
 
     public int MaxHealth => _maxHealth;
@@ -21,6 +22,7 @@ public class Health : MonoBehaviour
     private void Awake()
     {
         ResetHealth();
+        _hearts.MakeHearts();
     }
 
     public event Action<DamageInfo> OnDamaged;
@@ -41,6 +43,7 @@ public class Health : MonoBehaviour
 
             OnDamaged?.Invoke(info);
             Debug.Log(CurrentHealth);
+            _hearts.RemoveHeart();
 
             if (CurrentHealth <= 0) Die();
 
