@@ -50,6 +50,7 @@ public class Health : MonoBehaviour
     private void Die()
     {
         _spawner.CancelInvoke();
+        _spawner._audioSource.Stop();
         _gameOverDisplay.SetActive(true);
         _score.StopScore();
         Destroy(gameObject);

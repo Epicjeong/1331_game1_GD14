@@ -6,6 +6,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private GameObject[] _candyPrefab;
     private int _spawnRange = 7;
     private float _spawnInterval = 0.3f;
+    public AudioSource _audioSource;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
