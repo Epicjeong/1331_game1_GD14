@@ -20,7 +20,7 @@ public class Score : MonoBehaviour
         if (_playerAlive)
         {
             _timer += Time.deltaTime;
-            _score = System.Convert.ToInt32(_timer % 60);
+            _score = System.Convert.ToInt32(_timer);
             _scoreText.text = "Score: " + _score;
         }
     }
