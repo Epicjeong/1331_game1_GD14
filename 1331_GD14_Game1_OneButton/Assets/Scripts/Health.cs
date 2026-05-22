@@ -12,12 +12,12 @@ public class Health : MonoBehaviour
     [SerializeField] private GameObject _gameOverDisplay;
     [SerializeField] private Score _score;
     [SerializeField] private HeartDisplay _hearts;
- 
-    private int _invulTime = 2;
+    [SerializeField] private AudioSource _audio;
+
+    private int _invulTime = 1;
     public int CurrentHealth { get; private set; }
 
     public int MaxHealth => _maxHealth;
-    public bool IsDead { get; private set; }
 
     private void Awake()
     {
@@ -25,24 +25,19 @@ public class Health : MonoBehaviour
         _hearts.MakeHearts();
     }
 
-    public event Action<DamageInfo> OnDamaged;
-    public event Action OnDied;
-
     public void ResetHealth()
     {
         CurrentHealth = _maxHealth;
-        IsDead = false;
     }
 
     public void ApplyDamage(DamageInfo info)
     {
-        if (!IsDead || !_isInvulnerable)
+        if (!_isInvulnerable)
         {
             CurrentHealth -= info.Amount;
             CurrentHealth = Mathf.Clamp(CurrentHealth, 0, _maxHealth);
 
-            OnDamaged?.Invoke(info);
-            Debug.Log(CurrentHealth);
+            _audio?.Play();
             _hearts.RemoveHeart();
 
             if (CurrentHealth <= 0) Die();
@@ -54,8 +49,6 @@ public class Health : MonoBehaviour
 
     private void Die()
     {
-        IsDead = true;
-        OnDied?.Invoke();
         _spawner.CancelInvoke();
         _gameOverDisplay.SetActive(true);
         _score.StopScore();
@@ -65,6 +58,7 @@ public class Health : MonoBehaviour
     public IEnumerator Invulnerable()
     {
         _isInvulnerable = true;
+        Debug.Log(_isInvulnerable);
         _spawner.CancelInvoke();
         _player.Freeze();
         yield return new WaitForSeconds(_invulTime);
